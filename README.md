@@ -18,6 +18,12 @@
 
 ## 项目总结
 
+### 布局和样式处理
+
+- 每个页面采用的是 `display: table; display: table-cell; vertical-align: middle` 实现的布局
+- `body overflow:hidden` 和 `.content translateY` 实现页面之间的平滑过渡效果
+- `nav` 部分重置掉了 bootstrap 中 `navbar-default` 和 `.active > a` 的默认样式
+
 ### JavaScript & CSS3
 
 - `不借助` 框架实现 `跨浏览器` 事件处理
