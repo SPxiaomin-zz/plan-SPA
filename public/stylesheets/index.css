@@ -1,0 +1,234 @@
+.clearfix::before,
+.clearfix::after {
+    display: table;
+
+    content: " ";
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+.d-t {
+    display: table;
+}
+
+.d-tc {
+    display: table-cell;
+}
+
+.v-m {
+    vertical-align: middle;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    color: #777;
+
+    background: url(../images/header-bg.jpg) no-repeat center center fixed;
+    background-size: 100% 100%;
+
+    overflow: hidden;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+
+    transition: all .6s ease-in-out;
+}
+
+.one.content {
+    transform: translateY(0%);
+}
+
+.two.content {
+    transform: translateY(-100%);
+}
+
+.three.content {
+    transform: translateY(-200%);
+}
+
+.four.content {
+    transform: translateY(-300%);
+}
+
+.intro-section {
+    width: 100%;
+    height: 100%;
+}
+
+.about-section {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(245, 245, 245, 0.5);
+}
+
+.services-section {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-section {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(245, 245, 245, 0.5);
+}
+
+
+.nav-datetime {
+    padding: 15px;
+
+    color: #777;
+}
+
+.navbar-default {
+    border: none;
+
+    background: transparent;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    border-bottom: 1px solid #c58888;
+
+    color: #c58888;
+
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+    border-bottom: 1px solid #c58888;
+
+    color: #c58888;
+
+    background-color: transparent;
+}
+
+
+/* intro section */
+
+.intro-section {
+    text-align: center;
+}
+
+.intro-title {
+    color: #ffc0cb;
+    font-size: 66px;
+    font-weight: 800;
+
+}
+
+
+/* about section */
+
+.about-title {
+    padding-bottom: 100px;
+
+    color: #ffc0cb;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+form {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+textarea {
+    height: 168px!important;
+}
+
+.input-group-addon {
+    color: #777!important;
+    background: #fff!important;
+}
+
+.btn-default {
+    color: #777!important;
+}
+
+.btn-warning {
+    border-color: #ebbbbb!important;
+
+    background-color: #ebbbbb!important;
+}
+
+
+/* services section */
+
+.services-title {
+    padding-bottom: 100px;
+
+    color: #ffc0cb;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.wall-hint {
+    font-size: 40px;
+    text-align: center;
+}
+
+.plan {
+    padding: 20px;
+    padding-bottom: 23px;
+    margin-bottom: 15px;
+
+    background-color: rgba(245, 245, 245, 0.6);
+}
+
+.caption {
+    padding: 10px 0;
+
+    text-align: center;
+}
+
+.plan-tb {
+    float: left;
+
+    width: 50%;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    overflow: hidden;
+}
+
+.doing {
+    color: #EC4D68;
+}
+
+.done {
+    color: #7CD37C;
+}
+
+.c-red {
+    color: #EC4D68;
+}
+
+.c-red:hover,
+.c-red:focus {
+    color: #EC4D68;
+}
+
+
+/* contact section */
+
+.contact-title {
+    padding-left: 20%;
+}

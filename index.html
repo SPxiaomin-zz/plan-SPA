@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="my first angular spa">
+        <meta name="keywords" content="angular, spa">
+    
+        <title>Plan</title>
+
+        <link rel="shortcut icon" href="">
+
+        <link rel="stylesheet" href="./public/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="./public/stylesheets/index.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body ng-app="app" ng-controller="DesignCtrl">
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#page-top">PLAN</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right" ng-controller="GetDateCtrl">
+                        <li>
+                            <a id="one" href="#intro">Intro</a>
+                        </li>
+                        <li>
+                            <a id="two" href="#about">Start</a>
+                        </li>
+                        <li>
+                            <a id="three" href="#services">Plan Wall</a>
+                        </li>
+                        <li>
+                            <a id="four" href="#contact">Contact</a>
+                        </li>
+                        <li class="nav-datetime">{{datetime}}</li>
+                    </ul>
+                </div>
+          </div>
+        </nav>
+
+        <div class="content">
+            <section id="intro" class="intro-section d-t">
+                <div class="container d-tc v-m">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="intro-title">To Plan，Guys!</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about-section d-t">
+                <div class="container d-tc v-m">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="about-title">Plan Your Daily Life</h2>
+                            <form novalidate>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">起始</div>
+                                                <select class="form-control input-lg" ng-model="fromTime" ng-options="f for f in fromList"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">过程</div>
+                                                <select class="form-control input-lg" ng-model="durationTime" ng-options="d for d in durationList"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">目的</div>
+                                                <input class="form-control input-lg" ng-model="theme">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9 form-group">
+                                        <textarea class="form-control" placeholder="introduction" ng-model="plan"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <button type="reset" class="btn btn-default btn-lg btn-block">Reset</button>
+                                    </div>
+
+                                    <div class="col-sm-6 form-group">
+                                        <button type="button" class="btn btn-success btn-lg btn-block" ng-if="designedTimeList.length < 6" ng-click="save()" ng-disabled="!(fromTime&&durationTime&&theme&&plan)">Save</button>
+                                        <button type="button" class="btn btn-warning btn-lg btn-block" ng-if="designedTimeList.length >= 6" disabled>计划定太多啦～扛不住～</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="services" class="services-section d-t">
+                <div class="container d-tc v-m">
+                    <h2 class="services-title">Plan Wall</h2>
+
+                    <div class="wall-hint" ng-hide="designedTimeList.length != 0">
+                        There is nothing on the wall～～～
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4" ng-repeat="d in designedTimeList track by $index">
+                            <div class="plan clearfix">
+                                <div class="caption">
+                                    <h3>任务: {{d.theme}}</h3>
+                                    <p class="ellipsis">简述: {{d.plan}}</p>
+                                </div>
+                                <table class="table plan-tb">
+                                    <tbody>
+                                        <tr>
+                                            <td>From</td>
+                                            <td>{{d.from}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duration</td>
+                                            <td>{{d.duration}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table plan-tb">
+                                    <tbody>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>
+                                                <span href="#" class="ngshow" ng-show="d.status == '0'">waiting</span>
+                                                <span href="#" class="ngshow doing" ng-show="d.status == '1'">doing</span>
+                                                <span href="#" class="ngshow done" ng-show="d.status == '-1'">done</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Action</td>
+                                            <td>
+                                                <a href="#" class="ngshow c-red" role="button" ng-if="d.status != '-1'" ng-click="cancel($event, d.from)">cancel</a>
+                                                <a href="#" class="ngshow c-red" role="button" ng-if="d.status == '-1'" ng-click="del($event, d.from)">delete</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section d-t">
+                <div class="container d-tc v-m">
+                    <h1 class="contact-title">─=≡Σ((( つ•̀ω•́)つ动感光波哔哔哔!!!</h1>
+                </div>
+            </section>
+        </div>
+
+
+        <script src="./public/lib/jquery.min.js"></script>
+        <script src="./public/lib/bootstrap.min.js"></script>
+
+        <script src="./public/lib/angular.min.js"></script>
+        <script src="./public/javascript/index.js"></script>
+  </body>
+</html>

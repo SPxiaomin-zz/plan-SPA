@@ -1,0 +1,21 @@
+{
+  "name": "Angular-Practice",
+  "authors": [
+    "gujunmin <3013366498@qq.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.5"
+  }
+}
